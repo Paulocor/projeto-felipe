@@ -1,0 +1,51 @@
+<p-table
+selectionMode="single"
+#inputSearch
+stateKey="state-local"
+stateStorage="local"
+[value]="tbRows"
+[columns]="tbCols"
+[paginator]="true"
+[autoLayout]="true"
+[rowsPerPageOptions]="[5,10,20,30]"
+[rows]="10"
+[resizableColumns]="true"
+[columnResizeMode]="expand"
+[reorderableColumns]="true"
+[responsive]="true">
+
+  <ng-template pTemplate="caption">
+    {{tbTitle}}    
+  </ng-template>
+  <ng-template pTemplate="header" let-columns>
+    <tr>
+      <th *ngFor="let col of tbCols" [pSortableColumn]="col.field">
+        {{col.header}}
+        <p-sortIcon [field]="col.field"></p-sortIcon>
+
+      </th>
+    </tr>
+    <tr>
+      <th *ngFor="let col of tbCols" class="ui-fluid ng-star-inserted" [ngSwitch]="col.field">
+        <input placeholder="filter" pInputText type="text" class="ui-inputtext ui-corner-all ui-state-default ui-widget"
+          (input)="inputSearch.filter($event.target.value, col.field, 'contains')" [value]="inputSearch.filters[col.field]?.value">
+      </th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-row let-columns="columns">
+    <tr [pSelectableRow]="tbRows">
+      <td *ngFor="let col of tbCols">
+        {{          
+          (col?.type === 'string')
+          ?
+          row[col?.field]
+          :
+          ((row[col?.field]|dateEXP)|date:'dd/MM/yyyy':'GMT')
+        }}
+      </td>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="summary" >
+    Total de registros | {{tbRows?.length}}
+  </ng-template>
+</p-table>

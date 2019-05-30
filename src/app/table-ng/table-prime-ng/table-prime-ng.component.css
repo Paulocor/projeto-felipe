@@ -1,0 +1,48 @@
+/*
+  Altera tamanho Texto
+*/
+.ui-datatable-data , tr , td {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 110px;
+    font-size: 0.8rem;
+  }
+
+/*
+  Alteração no campo CAPTIOn
+*/
+  .ui-table-caption,.ui-table-summary{
+    background-color:#455A64 !important;
+    color:#EEEEEE !important;
+  }
+
+/*
+  Alteração no campo paginador
+*/
+  .ui-sortable-column,
+  .ui-paginator ,
+  .ui-paginator-pages ,
+  .ui-paginator-page,
+  .ui-state-active,
+  .ui-dropdown-panel.ui-dropdown-item {
+    background-color:#CDDC39 !important;    
+  }
+  .ui-dropdown-item.ui-state-highlight{
+    background-color:#455A64 !important;
+  }
+
+  /*
+  Alteração cor fonte
+*/
+
+  .ui-paginator-page{
+    color:#333333 !important;
+  }
+
+ /*
+  Alteração no campo input
+*/
+  .ui-table-thead, tr > th {
+    background-color: #b5b4b4 !important;
+  }
